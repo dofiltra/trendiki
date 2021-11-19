@@ -40,7 +40,7 @@ export default function Navbar({}) {
           </Link>
         </div>
         <div className="hidden md:block mx-1">
-          <Link to="/info/api" className="btn btn-ghost rounded-btn">
+          <Link to="/top" className="btn btn-ghost rounded-btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -52,14 +52,21 @@ export default function Navbar({}) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"
               />
             </svg>
-            API
+            {'  '}
+            <span className="hidden md:block">{translate('HeaderTrend')}</span>
           </Link>
         </div>
-        <div className="hidden md:block mx-1">
-          <Link to="/info/about" className="btn btn-ghost rounded-btn">
+        <div className="mx-1">
+          <Link to="/add" className="btn btn-ghost rounded-btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -71,31 +78,12 @@ export default function Navbar({}) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            {translate('HeaderAbout')}
           </Link>
         </div>
-        <div className="hidden md:block flex-1 mx-1">
-          <Link to="/info/contacts" className="btn btn-ghost rounded-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-              />
-            </svg>
-            {translate('HeaderContacts')}
-          </Link>
-        </div>
+        <div className="hidden md:block flex-1 mx-1"></div>
         <div className="flex-none">
           <div className="flex justify-end flex-1 px-2">
             <div className="flex items-stretch">
@@ -119,9 +107,7 @@ export default function Navbar({}) {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className="flex justify-end flex-1 px-2">
-            <div className="flex items-stretch">
+            <div className=" mx-1 flex items-stretch">
               <div className="dropdown">
                 <div tabIndex={0} className="btn btn-ghost rounded-btn">
                   {!user?.uid && (

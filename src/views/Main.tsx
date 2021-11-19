@@ -3,7 +3,7 @@
 const CardItem = ({ backgroundSrc, photoSrc }: any) => {
   return (
     <div
-      className="flex items-center w-full px-2 py-10 bg-cover card bg-base-200"
+      className="flex items-center w-full p-2 py-10 bg-cover card bg-base-200"
       style={{
         backgroundImage: `url("${backgroundSrc}")`,
       }}
@@ -19,18 +19,18 @@ const CardItem = ({ backgroundSrc, photoSrc }: any) => {
 export default function MainView() {
   return (
     <>
-      <h1 className="w-full flex justify-center uppercase">Выбери тренд</h1>
+      <h1 className="w-full flex justify-center uppercase p-4">Выбери тренд</h1>
 
-      <div className="card text-center shadow-2xl my-6">
+      <div className="text-center  my-6">
         <div className="flex flex-col w-full lg:flex-row">
-          <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
+          <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16">
             <CardItem
               backgroundSrc="https://picsum.photos/200/300/?blur=2"
               photoSrc="https://picsum.photos/300/180"
             />
           </div>
           <div className="divider lg:divider-vertical">VS</div>
-          <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
+          <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16">
             <CardItem
               backgroundSrc="https://picsum.photos/200/300/?blur=1"
               photoSrc="https://picsum.photos/300/180?v=1"

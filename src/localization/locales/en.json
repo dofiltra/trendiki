@@ -12,5 +12,8 @@
   "ApiTitle": "API",
   "ApiText": "Coming soon...",
   "ContactsTitle": "Contacts",
-  "ContactsText": "Coming soon..."
+  "ContactsText": "Coming soon...",
+
+  "HeaderTrend": "Trends",
+  "HeaderAdd": "Add"
 }
