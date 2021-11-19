@@ -1,0 +1,16 @@
+{
+  "HeaderMain": "Main",
+  "HeaderAbout": "About",
+  "HeaderContacts": "Contacts",
+  "Loading": "Loading...",
+  "ButtonSend": "Send",
+  "TryAgainLater": "There was an error, try again later",
+  "Sign in": "Sign in",
+  "Sign out": "Sign out",
+  "AboutTitle": "About",
+  "AboutText": "Coming soon...",
+  "ApiTitle": "API",
+  "ApiText": "Coming soon...",
+  "ContactsTitle": "Contacts",
+  "ContactsText": "Coming soon..."
+}
