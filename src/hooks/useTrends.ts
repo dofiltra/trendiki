@@ -7,7 +7,6 @@ export default function useTrends() {
   const [trends, setTrends] = useState<undefined | TrendItem[]>(undefined)
 
   const fetchData = async () => {
-    console.log(1)
     try {
       const { result: trends } = await getTrends()
       setTrends(trends)

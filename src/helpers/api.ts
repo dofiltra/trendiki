@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TrendItem } from 'models/Trends'
+import { sleep } from 'time-helpers'
 import _ from 'lodash'
 import fetch from 'unfetch'
 
@@ -26,22 +28,26 @@ export async function getTrends(count = 100) {
     'https://s1.stc.all.kpcdn.net/putevoditel/projectid_379258/images/tild3333-6265-4666-b565-636136626138__shutterstock_7413469.jpg',
     'https://media.glamour.ru/photos/6176f4db002384cbd2bb3bec/16:9/w_2560%2Cc_limit/image-25-10-21-07-41-2.jpeg',
     'https://aif-s3.aif.ru/images/025/502/839b58c7b8782dca5d35768c566176c8.jpg',
-  ].sort(() => (Math.random() > 0.5 ? 1 : -1))
+  ]
+
+  await sleep(5e3)
 
   try {
     return {
       result: mock.map(
-        (x) => new TrendItem({ imageSrc: x, votes: _.random(10, 90, false) })
+        (imageSrc) =>
+          new TrendItem({ imageSrc, votes: _.random(10, 90, false) })
       ),
+      //.sort((a, b) => (b.votes! - a.votes! > 0 ? 1 : -1)),
     }
-    // const resp = await fetch(`${HOST_API}/api/trends/get?count=${count}`, {
-    //   headers,
-    //   method: 'GET',
-    // })
+    const resp = await fetch(`${HOST_API}/api/trends/get?count=${count}`, {
+      headers,
+      method: 'GET',
+    })
 
-    // const { items } = await resp.json()
+    const { items } = await resp.json()
 
-    // return items
+    return items
   } catch (error: any) {
     return { error }
   }

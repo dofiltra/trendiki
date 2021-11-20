@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { Loading } from 'components/Loader'
 import { TrendItem } from 'models/Trends'
 import { useEffect, useState } from 'preact/hooks'
 import _ from 'lodash'
@@ -55,9 +56,10 @@ const TrendBlock = ({
 
 export default function MainView() {
   const { trends = [], maxVotes = 0 } = useTrends()
-  console.log('m', maxVotes)
 
-  const [state, setState] = useState({})
+  const [state, setState] = useState({
+    loading: maxVotes === 0,
+  })
 
   const onSelectWinner = (winner: TrendItem, loser: TrendItem) => {
     trends.shift()
@@ -65,6 +67,7 @@ export default function MainView() {
 
     setState({
       ...state,
+      loading: false,
     })
   }
 
@@ -73,7 +76,8 @@ export default function MainView() {
       <h1 className="w-full flex justify-center uppercase p-4">Выбери тренд</h1>
 
       <div className="text-center my-6">
-        {trends.length < 2 && <EndBlock />}
+        {state.loading && maxVotes === 0 && <Loading />}
+        {!state.loading && trends.length < 2 && <EndBlock />}
         {trends.length >= 2 && (
           <div className="flex flex-col w-full lg:flex-row">
             <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16 ">
