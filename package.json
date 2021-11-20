@@ -1,11 +1,11 @@
 {
-  "name": "frontend-starter",
+  "name": "trendiki",
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "scripts": {
-    "start": "serve -s dist -l 2985",
-    "dev": "vite --port 2985",
+    "start": "serve -s dist -l 2984",
+    "dev": "vite --port 2984",
     "build": "cross-env NODE_ENV=production tsc && vite build",
     "pretty": "prettier --check src",
     "lint": "yarn pretty && eslint --max-warnings 0 --ext ts,tsx,json src",
@@ -31,6 +31,7 @@
     "@vitejs/plugin-react": "^1.0.9",
     "daisyui": "^1.16.2",
     "firebase": "^9.4.1",
+    "lodash": "^4.17.21",
     "preact": "^10.5.15",
     "react-router-dom": "^6.0.2",
     "unfetch": "^4.2.0",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.1.5",
     "@types/node": "^16.11.7",
+    "@types/lodash": "^4.14.177",
     "@types/react": "^17.0.34",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
