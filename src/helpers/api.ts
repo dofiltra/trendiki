@@ -30,6 +30,8 @@ export async function getTrends(count = 100) {
     'https://aif-s3.aif.ru/images/025/502/839b58c7b8782dca5d35768c566176c8.jpg',
   ]
 
+  await sleep(1e3)
+
   try {
     return {
       result: mock

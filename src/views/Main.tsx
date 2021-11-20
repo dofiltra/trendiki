@@ -7,8 +7,8 @@
 import { Link } from 'react-router-dom'
 import { Loading } from 'components/Loader'
 import { TrendItem } from 'models/Trends'
-import { useEffect, useState } from 'preact/hooks'
 import { useLocalize } from '@borodutch-labs/localize-react'
+import { useState } from 'preact/hooks'
 import _ from 'lodash'
 import useTrends from 'hooks/useTrends'
 
@@ -124,12 +124,10 @@ const TrendBlock = ({
 }
 
 export default function MainView() {
-  const { trends = [] } = useTrends()
+  const { trends = [], loading: trendsLoading } = useTrends()
   const { translate } = useLocalize()
 
-  const [state, setState] = useState({
-    loading: trends.length === 0,
-  })
+  const [state, setState] = useState({})
 
   const onSelectWinner = (winner: TrendItem, loser: TrendItem) => {
     trends.shift()
@@ -137,21 +135,22 @@ export default function MainView() {
 
     setState({
       ...state,
-      loading: false,
     })
   }
 
+  const isEnd = !trendsLoading && trends.length < 2
+
   return (
     <>
-      <h1 className="w-full flex justify-center uppercase p-4">
-        {translate('Select trend')}
-      </h1>
+      {!isEnd && (
+        <h1 className="w-full flex justify-center uppercase p-4">
+          {translate('Select trend')}
+        </h1>
+      )}
 
       <div className="text-center my-6">
-        {/* {<EndBlock />} */}
-
-        {state.loading && trends.length === 0 && <Loading />}
-        {!state.loading && trends.length < 2 && <EndBlock />}
+        {trendsLoading && <Loading />}
+        {isEnd && <EndBlock />}
         {trends.length >= 2 && (
           <div className="flex flex-col w-full lg:flex-row">
             <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16 ">
