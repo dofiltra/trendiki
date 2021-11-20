@@ -30,14 +30,13 @@ export async function getTrends(count = 100) {
     'https://aif-s3.aif.ru/images/025/502/839b58c7b8782dca5d35768c566176c8.jpg',
   ]
 
-  await sleep(5e3)
-
   try {
     return {
       result: mock
         .map(
           (imageSrc) =>
             new TrendItem({
+              id: _.random(true).toString(),
               imageSrc,
               votes: _.random(10, 90, false),
               views: _.random(90, 100, false),

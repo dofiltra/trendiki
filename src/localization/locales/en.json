@@ -15,5 +15,11 @@
   "ContactsText": "Coming soon...",
 
   "HeaderTrend": "Trends",
-  "HeaderAdd": "Add"
+  "HeaderAdd": "Add",
+  "Select trend": "Choose a trend",
+  "VoteAccepted": "Your votes are accepted!",
+  "VoteTotal": "Today's totals will be available at the end of the day",
+  "NextBattle": "NextBattle will begin tomorrow",
+  "GoToTop": "Go to view the winners",
+  "Participate": "Participate in the battle"
 }
