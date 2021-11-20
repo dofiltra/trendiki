@@ -1,7 +1,7 @@
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { TrendItem } from 'models/Trends'
-import { getRandomInt } from './numbers'
+import _ from 'lodash'
 import fetch from 'unfetch'
 
 export const HOST_API = 'https://api.dofiltra.com'
@@ -31,7 +31,7 @@ export async function getTrends(count = 100) {
   try {
     return {
       result: mock.map(
-        (x) => new TrendItem({ imageSrc: x, votes: getRandomInt(10, 90) })
+        (x) => new TrendItem({ imageSrc: x, votes: _.random(10, 90, false) })
       ),
     }
     // const resp = await fetch(`${HOST_API}/api/trends/get?count=${count}`, {
