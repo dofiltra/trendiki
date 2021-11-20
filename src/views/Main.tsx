@@ -7,8 +7,8 @@
 import { Link } from 'react-router-dom'
 import { Loading } from 'components/Loader'
 import { TrendItem } from 'models/Trends'
+import { useEffect, useState } from 'preact/hooks'
 import { useLocalize } from '@borodutch-labs/localize-react'
-import { useState } from 'preact/hooks'
 import _ from 'lodash'
 import useTrends from 'hooks/useTrends'
 
@@ -67,58 +67,99 @@ const EndBlock = () => {
 }
 
 const TrendBlock = ({
-  photoSrc,
-  maxHeight = 180,
-  maxWidth = 300,
+  item,
+  maxHeight = 320,
+  maxWidth = 150,
   onClick,
-  percentWin = 0,
 }: any) => {
+  const trendItem = item as TrendItem
+  const { instagramId, votes } = trendItem
+  const percent = trendItem.getPercent()
+  const instagramUrl =
+    instagramId &&
+    `https://www.instagram.com/p/${instagramId}/?utm_source=ig_embed&utm_campaign=loading`
+
   return (
     <div
-      className="flex items-center w-full p-2 py-10 bg-cover card bg-base-200 cursor-pointer"
-      style={{
-        backgroundImage: `url("${photoSrc}")`,
-      }}
+      key={instagramId}
+      className="flex items-center w-full  bg-cover card cursor-pointer"
       onClick={onClick}
     >
-      <div className="card glass lg:card-side text-neutral-content">
-        <figure className="p-3">
-          <img
-            src={photoSrc}
-            className="rounded-lg shadow-lg"
-            style={{
-              maxWidth,
-              maxHeight,
-            }}
+      <button className="transition p-6 border-0 duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-16 w-16 animate-bounce transition border-0 duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-140"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="#ff007d"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
           />
-        </figure>
-      </div>
-      <div className="w-full flex justify-center p-4">
-        <div className="p-6 space-y-2 artboard phone items-stretch text-white">
-          <progress
-            className="progress progress-warning"
-            value={percentWin}
-            max={100}
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"
           />
-          <div className="flex items-stretch justify-center glass">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-            {percentWin.toFixed(2)}%
+        </svg>
+      </button>
+      <blockquote
+        className="instagram-media"
+        data-instgrm-permalink={instagramUrl}
+        data-instgrm-version={14}
+        style={{
+          background: '#FFF',
+          border: 0,
+          // borderRadius: '3px',
+          // boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
+          margin: '1px',
+          maxHeight: `${maxHeight}px`,
+          maxWidth: `${maxWidth}px`,
+          minWidth: '100px',
+          padding: 0,
+          // width: 'calc(100% - 2px)',
+        }}
+      >
+        <Loading />
+      </blockquote>
+      {/* <div className="w-full flex justify-center ">
+        <div className="p-6 space-y-2 artboard phone items-stretch w-full">
+          <div className="grid-flow-row shadow stats">
+            <div className="stat">
+              <div className="stat-title"></div>
+              <div className="stat-value">
+                <div className="flex items-stretch justify-center ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-9 w-9"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="red"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                  {percent.toFixed(2)}%
+                </div>
+                <progress
+                  className="progress progress-warning"
+                  value={percent}
+                  max={100}
+                />
+              </div>
+              <div className="stat-desc text-success">↗︎ +{votes} (22%)</div>
+            </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
@@ -136,14 +177,19 @@ export default function MainView() {
     setState({
       ...state,
     })
+    setTimeout(() => {
+      ;(window as any).instgrm?.Embeds?.process()
+    }, 1000)
   }
+
+  useEffect(() => (window as any).instgrm?.Embeds?.process(), [])
 
   const isEnd = !trendsLoading && trends.length < 2
 
   return (
     <>
       {!isEnd && (
-        <h1 className="w-full flex justify-center uppercase p-4">
+        <h1 className="w-full flex justify-center uppercase p-2">
           {translate('Select trend')}
         </h1>
       )}
@@ -155,17 +201,15 @@ export default function MainView() {
           <div className="flex flex-col w-full lg:flex-row">
             <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16 ">
               <TrendBlock
-                photoSrc={trends[0].imageSrc}
+                item={trends[0]}
                 onClick={() => onSelectWinner(trends[0], trends[1])}
-                percentWin={trends[0].getPercent()}
               />
             </div>
             <div className="divider lg:divider-vertical">VS</div>
             <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16">
               <TrendBlock
-                photoSrc={trends[1].imageSrc}
+                item={trends[1]}
                 onClick={() => onSelectWinner(trends[1], trends[0])}
-                percentWin={trends[1].getPercent()}
               />
             </div>
           </div>

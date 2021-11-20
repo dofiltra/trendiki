@@ -3,12 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dofiltra</title>
+    <title>Trendiki</title>
     <meta name="description" content="" />
   </head>
   <body>
     <noscript>Please, turn on JavaScript to see this page.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script type="text/javascript">
+      function instagramEmbbedCheck() {
+        if (typeof window.instgrm === 'undefined')
+          setTimeout(instagramEmbbedCheck, 3000)
+        else window.instgrm.Embeds.process()
+      }
+
+      setTimeout(() => instagramEmbbedCheck(), 3e3)
+    </script>
   </body>
 </html>

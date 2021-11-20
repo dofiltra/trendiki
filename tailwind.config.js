@@ -3,6 +3,9 @@
 module.exports = {
   purge: ['./public/index.html', './src/**/!(tailwind).{ts,tsx}'],
   plugins: [require('daisyui')],
+  variants: {
+    width: ['responsive', 'hover', 'focus'],
+  },
   theme: {
     extend: {
       colors: {

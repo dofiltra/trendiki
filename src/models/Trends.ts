@@ -1,6 +1,7 @@
 export class TTrendItem {
   public id?: string
-  public imageSrc!: string
+  public imageSrc?: string
+  public instagramId?: string
   public category?: number
   public votes?: number
   public views?: number
@@ -12,6 +13,7 @@ export class TrendItem extends TTrendItem {
     super()
     this.id = t.id
     this.imageSrc = t.imageSrc
+    this.instagramId = t.instagramId
     this.votes = t.votes || 0
     this.views = t.views || 0
   }
