@@ -55,10 +55,10 @@ const TrendBlock = ({
 }
 
 export default function MainView() {
-  const { trends = [], maxVotes = 0 } = useTrends()
+  const { trends = [] } = useTrends()
 
   const [state, setState] = useState({
-    loading: maxVotes === 0,
+    loading: trends.length === 0,
   })
 
   const onSelectWinner = (winner: TrendItem, loser: TrendItem) => {
@@ -76,7 +76,7 @@ export default function MainView() {
       <h1 className="w-full flex justify-center uppercase p-4">Выбери тренд</h1>
 
       <div className="text-center my-6">
-        {state.loading && maxVotes === 0 && <Loading />}
+        {state.loading && trends.length === 0 && <Loading />}
         {!state.loading && trends.length < 2 && <EndBlock />}
         {trends.length >= 2 && (
           <div className="flex flex-col w-full lg:flex-row">
@@ -84,7 +84,7 @@ export default function MainView() {
               <TrendBlock
                 photoSrc={trends[0].imageSrc}
                 onClick={() => onSelectWinner(trends[0], trends[1])}
-                percentWin={trends[0].getPercent(maxVotes)}
+                percentWin={trends[0].getPercent()}
               />
             </div>
             <div className="divider lg:divider-vertical">VS</div>
@@ -92,7 +92,7 @@ export default function MainView() {
               <TrendBlock
                 photoSrc={trends[1].imageSrc}
                 onClick={() => onSelectWinner(trends[1], trends[0])}
-                percentWin={trends[1].getPercent(maxVotes)}
+                percentWin={trends[1].getPercent()}
               />
             </div>
           </div>

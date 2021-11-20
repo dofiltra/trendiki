@@ -19,5 +19,5 @@ export default function useTrends() {
     void fetchData()
   }, [])
 
-  return { trends, maxVotes: _.maxBy(trends, 'votes')?.votes || 0 }
+  return { trends }
 }

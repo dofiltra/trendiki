@@ -34,11 +34,18 @@ export async function getTrends(count = 100) {
 
   try {
     return {
-      result: mock.map(
-        (imageSrc) =>
-          new TrendItem({ imageSrc, votes: _.random(10, 90, false) })
-      ),
-      //.sort((a, b) => (b.votes! - a.votes! > 0 ? 1 : -1)),
+      result: mock
+        .map(
+          (imageSrc) =>
+            new TrendItem({
+              imageSrc,
+              votes: _.random(10, 90, false),
+              views: _.random(90, 100, false),
+            })
+        )
+        .sort((a, b) =>
+          _.random(true) > 0.5 && b.votes! - a.votes! > 0 ? 1 : -1
+        ),
     }
     const resp = await fetch(`${HOST_API}/api/trends/get?count=${count}`, {
       headers,
