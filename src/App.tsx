@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import AboutPage from 'views/info/About'
+import AddView from 'views/Add'
 import AuthContextProvider from 'components/Auth/AuthContextProvider'
 import ContactsPage from 'views/info/Contacts'
 import FooterSmall from 'components/Footer/FooterSmall'
@@ -8,6 +9,7 @@ import LoginView from 'views/Login'
 import MainView from 'views/Main'
 import Navbar from 'components/Navbar/Navbar'
 import Root from 'components/Root'
+import TopView from 'views/Top'
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
               <Route path="/login" element={<LoginView />} />
               <Route path="/info/about" element={<AboutPage />} />
               <Route path="/info/contacts" element={<ContactsPage />} />
+              <Route path="/add" element={<AddView />} />
+              <Route path="/top" element={<TopView />} />
             </Routes>
             <FooterSmall />
           </AuthContextProvider>

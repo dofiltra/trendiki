@@ -7,9 +7,9 @@ export class TTrendItem {
   public id?: string
   public instagramId?: string
   public category?: TrendCategory
+  public lang?: string
   public votes?: number
   public views?: number
-  public lang?: string
 }
 
 export class TrendItem extends TTrendItem {
@@ -17,6 +17,8 @@ export class TrendItem extends TTrendItem {
     super()
     this.id = t.id
     this.instagramId = t.instagramId
+    this.category = t.category || TrendCategory.unknown
+    this.lang = t.lang
     this.votes = t.votes || 0
     this.views = t.views || 0
   }

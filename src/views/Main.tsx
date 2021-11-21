@@ -121,7 +121,7 @@ const TrendBlock = ({ item, onClick }: any) => {
       >
         <Loading />
       </blockquote>
-      <div className="hidden md:block w-full flex justify-center ">
+      {/* <div className="hidden md:block w-full flex justify-center ">
         <div className="p-2 artboard phone items-stretch w-full">
           <div className="grid-flow-row shadow stats">
             <div className="stat">
@@ -150,11 +150,11 @@ const TrendBlock = ({ item, onClick }: any) => {
                   max={100}
                 />
               </div>
-              {/* <div className="stat-desc text-success">↗︎ +{votes} (22%)</div> */}
+              {<div className="stat-desc text-success">↗︎ +{votes} (22%)</div>}
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
@@ -174,7 +174,6 @@ export default function MainView() {
   }
 
   useEffect(() => {
-    console.log(trends.length)
     ;(window as any).instgrm?.Embeds?.process()
   }, [state, trends])
 

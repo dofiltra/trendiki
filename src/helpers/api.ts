@@ -13,37 +13,6 @@ export const headers = {
 }
 
 export async function getTrends(count = 100) {
-  // const mockInstagrams = [
-  //   'CWd3_ceIExY',
-  //   'CWfSVSnM0Dq',
-  //   'CWeFU55tVOx',
-  //   'CWdMuh2I0WE',
-  //   'CWfbXQ6o4Gx',
-  //   'CWfFjRVIU92',
-  //   'CWfd1-SAbau',
-  //   'CWfyOdCtf3J',
-  //   'CWfyN-uN5KO',
-  //   'CWfyHs9NOuP',
-  //   'CWfyHVZAleW',
-  // ]
-  // return {
-  //   result: mockInstagrams
-  //     // mockImgSrc
-  //     .map(
-  //       (instagramId) =>
-  //         new TrendItem({
-  //           id: _.random(true).toString(),
-  //           instagramId,
-  //           // imageSrc,
-  //           votes: _.random(10, 90, false),
-  //           views: _.random(90, 100, false),
-  //         })
-  //     )
-  //     .sort((a, b) =>
-  //       _.random(true) > 0.5 && b.votes! - a.votes! > 0 ? 1 : -1
-  //     ),
-  // }
-
   try {
     const resp = await fetch(`${HOST_API}/api/trendiki/get?count=${count}`, {
       headers,
@@ -58,6 +27,20 @@ export async function getTrends(count = 100) {
       .sort((a: TrendItem, b: TrendItem) =>
         _.random(true) > 0.5 && b.votes! - a.votes! > 0 ? 1 : -1
       )
+  } catch (error: any) {
+    return { error }
+  }
+}
+
+export async function addTrend(trendItem: TrendItem) {
+  try {
+    const resp = await fetch(`${HOST_API}/api/trendiki/add`, {
+      headers,
+      method: 'POST',
+      body: JSON.stringify(trendItem),
+    })
+
+    return await resp.json()
   } catch (error: any) {
     return { error }
   }

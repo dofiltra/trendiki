@@ -21,5 +21,10 @@
   "VoteTotal": "Today's totals will be available at the end of the day",
   "NextBattle": "NextBattle will begin tomorrow",
   "GoToTop": "Go to view the winners",
-  "Participate": "Participate in the battle"
+  "Participate": "Participate in the battle",
+  "AddTrendBtn": "Add",
+  "Add trend": "Add trend",
+  "Insert instagram link": "Insert instagram link",
+  "Instagram link invalid": "Instagram link invalid",
+  "Your post add to the Battle": "Your post add to the Battle"
 }

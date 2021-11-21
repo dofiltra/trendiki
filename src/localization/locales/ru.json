@@ -21,5 +21,10 @@
   "VoteTotal": "Итоги за сегодня будут доступны в конце дня",
   "NextBattle": "Следующая битва начнется завтра",
   "GoToTop": "Перейти к просмотру победителей",
-  "Participate": "Участвовать в битве"
+  "Participate": "Участвовать в битве",
+  "AddTrendBtn": "Добавить",
+  "Add trend": "Add trend",
+  "Insert instagram link": "Вставьте ссылку из инстаграма на пост",
+  "Instagram link invalid": "Неправильная ссылка на инстаграм пост",
+  "Your post add to the Battle": "Ваш пост добавлен в очередь на битву"
 }
