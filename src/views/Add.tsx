@@ -88,6 +88,7 @@ export default function AddView() {
 
                   setState({
                     ...state,
+                    link: '',
                     success: true,
                   })
                 }}
@@ -102,7 +103,7 @@ export default function AddView() {
               </div>
             )}
 
-            {postId && state.success && (
+            {state.success && (
               <div className="alert alert-success">
                 {translate('Your post add to the Battle')}
               </div>
