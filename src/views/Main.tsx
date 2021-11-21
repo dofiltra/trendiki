@@ -66,12 +66,7 @@ const EndBlock = () => {
   )
 }
 
-const TrendBlock = ({
-  item,
-  maxHeight = 320,
-  maxWidth = 150,
-  onClick,
-}: any) => {
+const TrendBlock = ({ item, onClick }: any) => {
   const trendItem = item as TrendItem
   const { instagramId, votes } = trendItem
   const percent = trendItem.getPercent()
