@@ -42,6 +42,6 @@ iframe.instagram-media {
 
 @media (max-width: 600px) {
   iframe.instagram-media {
-    height: 200px !important;
+    height: 220px !important;
   }
 }
