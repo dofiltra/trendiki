@@ -20,3 +20,28 @@ h3 {
 h4 {
   font-size: 140%;
 }
+
+iframe.instagram-media {
+  max-width: 100% !important;
+  width: 100% !important;
+  min-width: auto !important;
+
+  height: 450px !important;
+}
+@media (max-width: 980px) {
+  iframe.instagram-media {
+    height: 400px !important;
+  }
+}
+
+@media (max-width: 780px) {
+  iframe.instagram-media {
+    height: 320px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  iframe.instagram-media {
+    height: 200px !important;
+  }
+}

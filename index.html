@@ -11,14 +11,5 @@
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
     <script async src="//www.instagram.com/embed.js"></script>
-    <script type="text/javascript">
-      function instagramEmbbedCheck() {
-        if (typeof window.instgrm === 'undefined')
-          setTimeout(instagramEmbbedCheck, 3000)
-        else window.instgrm.Embeds.process()
-      }
-
-      setTimeout(() => instagramEmbbedCheck(), 3e3)
-    </script>
   </body>
 </html>

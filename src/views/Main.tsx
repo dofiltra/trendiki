@@ -85,7 +85,7 @@ const TrendBlock = ({
       className="flex items-center w-full  bg-cover card cursor-pointer"
       onClick={onClick}
     >
-      <button className="transition p-6 border-0 duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150">
+      <button className="transition pt-6 border-0 duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-16 w-16 animate-bounce transition border-0 duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-140"
@@ -107,27 +107,27 @@ const TrendBlock = ({
           />
         </svg>
       </button>
+      <svg
+        className="animate-bounce w-6 h-6 text-amber-900"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+
       <blockquote
         className="instagram-media"
         data-instgrm-permalink={instagramUrl}
         data-instgrm-version={14}
-        style={{
-          background: '#FFF',
-          border: 0,
-          // borderRadius: '3px',
-          // boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-          margin: '1px',
-          maxHeight: `${maxHeight}px`,
-          maxWidth: `${maxWidth}px`,
-          minWidth: '100px',
-          padding: 0,
-          // width: 'calc(100% - 2px)',
-        }}
       >
         <Loading />
       </blockquote>
-      {/* <div className="w-full flex justify-center ">
-        <div className="p-6 space-y-2 artboard phone items-stretch w-full">
+      <div className="hidden md:block w-full flex justify-center ">
+        <div className="p-2 artboard phone items-stretch w-full">
           <div className="grid-flow-row shadow stats">
             <div className="stat">
               <div className="stat-title"></div>
@@ -155,11 +155,11 @@ const TrendBlock = ({
                   max={100}
                 />
               </div>
-              <div className="stat-desc text-success">↗︎ +{votes} (22%)</div>
+              {/* <div className="stat-desc text-success">↗︎ +{votes} (22%)</div> */}
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
@@ -167,7 +167,6 @@ const TrendBlock = ({
 export default function MainView() {
   const { trends = [], loading: trendsLoading } = useTrends()
   const { translate } = useLocalize()
-
   const [state, setState] = useState({})
 
   const onSelectWinner = (winner: TrendItem, loser: TrendItem) => {
@@ -177,12 +176,12 @@ export default function MainView() {
     setState({
       ...state,
     })
-    setTimeout(() => {
-      ;(window as any).instgrm?.Embeds?.process()
-    }, 1000)
   }
 
-  useEffect(() => (window as any).instgrm?.Embeds?.process(), [])
+  useEffect(() => {
+    console.log(trends.length)
+    ;(window as any).instgrm?.Embeds?.process()
+  }, [state, trends])
 
   const isEnd = !trendsLoading && trends.length < 2
 
@@ -198,15 +197,30 @@ export default function MainView() {
         {trendsLoading && <Loading />}
         {isEnd && <EndBlock />}
         {trends.length >= 2 && (
-          <div className="flex flex-col w-full lg:flex-row">
-            <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16 ">
+          <div className="flex flex-row w-full">
+            <div className="grid flex-grow h-full card bg-base-300 rounded-box place-items-center">
               <TrendBlock
                 item={trends[0]}
                 onClick={() => onSelectWinner(trends[0], trends[1])}
               />
             </div>
-            <div className="divider lg:divider-vertical">VS</div>
-            <div className="grid flex-grow card bg-base-300 rounded-box place-items-center min-h-16">
+            <div className="divider divider-vertical">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 w-12"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </div>
+            <div className="grid flex-grow h-full card bg-base-300 rounded-box place-items-center">
               <TrendBlock
                 item={trends[1]}
                 onClick={() => onSelectWinner(trends[1], trends[0])}
