@@ -1,13 +1,13 @@
 {
   "HeaderMain": "Битва",
-  "HeaderAbout": "О сайте",
+  "HeaderAbout": "О нас",
   "HeaderContacts": "Контакты",
   "Loading": "Загрузка...",
   "ButtonSend": "Отправить",
   "TryAgainLater": "Произошла ошибка, попробуйте позже",
   "Sign in": "Войти",
   "Sign out": "Выйти",
-  "AboutTitle": "О сервисе",
+  "AboutTitle": "О нас",
   "AboutText": "Информация скоро появится. К концу месяца уж точно!",
   "ApiTitle": "API",
   "ApiText": "Информация скоро появится. К концу месяца уж точно!",
@@ -27,5 +27,8 @@
   "Top trends": "Топ тренды",
   "Insert instagram link": "Вставьте ссылку из инстаграма на пост",
   "Instagram link invalid": "Неправильная ссылка на инстаграм пост",
-  "Your post add to the Battle": "Ваш пост добавлен в очередь на битву"
+  "Your post add to the Battle": "Ваш пост добавлен в очередь на битву",
+  "Lang": "Язык: {{lang}}",
+  "Views": "Просмотров: {{views}}",
+  "Votes": "Голосов: {{votes}}"
 }

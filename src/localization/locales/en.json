@@ -27,5 +27,8 @@
   "Top trends": "Top trends",
   "Insert instagram link": "Insert instagram link",
   "Instagram link invalid": "Instagram link invalid",
-  "Your post add to the Battle": "Your post add to the Battle"
+  "Your post add to the Battle": "Your post add to the Battle",
+  "Lang": "Language: {{lang}}",
+  "Views": "Views: {{views}}",
+  "Votes": "Votes: {{votes}}"
 }
