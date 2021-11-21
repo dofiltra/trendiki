@@ -1,8 +1,13 @@
+export enum TrendCategory {
+  unknown = 0,
+  manicure = 1,
+}
+
 export class TTrendItem {
   public id?: string
-  public imageSrc?: string
   public instagramId?: string
-  public category?: number
+  // public imageSrc?: string
+  public category?: TrendCategory
   public votes?: number
   public views?: number
   public lang?: string
@@ -12,7 +17,7 @@ export class TrendItem extends TTrendItem {
   constructor(t: TTrendItem) {
     super()
     this.id = t.id
-    this.imageSrc = t.imageSrc
+    // this.imageSrc = t.imageSrc
     this.instagramId = t.instagramId
     this.votes = t.votes || 0
     this.views = t.views || 0
