@@ -1,7 +1,6 @@
 import { TrendItem } from 'models/Trends'
 import { getTrends } from 'helpers/api'
 import { useEffect, useState } from 'react'
-import _ from 'lodash'
 
 export default function useTrends() {
   const [trends, setTrends] = useState<TrendItem[]>([])
@@ -9,8 +8,7 @@ export default function useTrends() {
 
   const fetchData = async () => {
     try {
-      const { result: trends } = await getTrends()
-      setTrends(trends)
+      setTrends(await getTrends())
       setLoading(false)
     } catch (err) {
       console.log(err)
