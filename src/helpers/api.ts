@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { TrendItem } from 'models/Trends'
+import { TrendItem, UpdTrend } from 'models/Trends'
 import _ from 'lodash'
 import fetch from 'unfetch'
 
@@ -38,6 +38,19 @@ export async function addTrend(trendItem: TrendItem) {
       headers,
       method: 'POST',
       body: JSON.stringify(trendItem),
+    })
+
+    return await resp.json()
+  } catch (error: any) {
+    return { error }
+  }
+}
+export async function updTrends(updTrends: UpdTrend[]) {
+  try {
+    const resp = await fetch(`${HOST_API}/api/trendiki/upd`, {
+      headers,
+      method: 'POST',
+      body: JSON.stringify(updTrends),
     })
 
     return await resp.json()

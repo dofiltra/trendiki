@@ -6,7 +6,8 @@
 
 import { Link } from 'react-router-dom'
 import { Loading } from 'components/Loader'
-import { TrendItem } from 'models/Trends'
+import { TrendItem, UpdTrend } from 'models/Trends'
+import { updTrends } from 'helpers/api'
 import { useEffect, useState } from 'preact/hooks'
 import { useLocalize } from '@borodutch-labs/localize-react'
 import _ from 'lodash'
@@ -162,19 +163,38 @@ const TrendBlock = ({ item, onClick }: any) => {
 export default function MainView() {
   const { trends = [], loading: trendsLoading } = useTrends()
   const { translate } = useLocalize()
-  const [state, setState] = useState({})
+  const [state, setState] = useState({
+    viewsVotesList: [] as UpdTrend[],
+  })
 
   const onSelectWinner = (winner: TrendItem, loser: TrendItem) => {
     trends.shift()
     trends.shift()
 
+    let newViewsVotes = state.viewsVotesList.concat([
+      { wid: winner._id },
+      {
+        lid: loser._id,
+      },
+    ])
+
+    if (newViewsVotes.length > 6) {
+      updTrends(newViewsVotes)
+        .then((x) => console.log(x))
+        .catch((x) => console.log(x))
+
+      newViewsVotes = []
+    }
+
     setState({
       ...state,
+      viewsVotesList: newViewsVotes,
     })
   }
 
   useEffect(() => {
     ;(window as any).instgrm?.Embeds?.process()
+    console.log(state.viewsVotesList)
   }, [state, trends])
 
   const isEnd = !trendsLoading && trends.length < 2

@@ -3,8 +3,13 @@ export enum TrendCategory {
   manicure = 1,
 }
 
+export class UpdTrend {
+  wid?: string
+  lid?: string
+}
+
 export class TTrendItem {
-  public id?: string
+  public _id?: string
   public instagramId?: string
   public category?: TrendCategory
   public lang?: string
@@ -15,7 +20,7 @@ export class TTrendItem {
 export class TrendItem extends TTrendItem {
   constructor(t: TTrendItem) {
     super()
-    this.id = t.id
+    this._id = t._id
     this.instagramId = t.instagramId
     this.category = t.category || TrendCategory.unknown
     this.lang = t.lang
