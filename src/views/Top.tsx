@@ -20,7 +20,12 @@ export default function TopView() {
   useEffect(() => {
     getTrends(50)
       .then((items: TrendItem[]) => {
-        setState({ ...state, trends: items })
+        setState({
+          ...state,
+          trends: items.sort((a, b) =>
+            b.getPercent() > a.getPercent() ? 1 : -1
+          ),
+        })
       })
       .catch((x) => console.log(x))
   }, [])
@@ -74,21 +79,15 @@ export default function TopView() {
                       </div>
                     )) ||
                       ''}
+                    <div className="text-sm opacity-50">
+                      {translate('Views', { views: t.views || 0 })}{' '}
+                    </div>
+                    <div className="text-sm opacity-50">
+                      {translate('Votes', { votes: t.votes || 0 })}{' '}
+                    </div>
                     {(t.lang && (
                       <div className="text-sm opacity-50">
                         {translate('Lang', { lang: t.lang || '' })}{' '}
-                      </div>
-                    )) ||
-                      ''}
-                    {(t.views && (
-                      <div className="text-sm opacity-50">
-                        {translate('Views', { views: t.views })}{' '}
-                      </div>
-                    )) ||
-                      ''}
-                    {(t.votes && (
-                      <div className="text-sm opacity-50">
-                        {translate('Votes', { votes: t.votes })}{' '}
                       </div>
                     )) ||
                       ''}

@@ -199,6 +199,12 @@ export default function MainView() {
 
   const isEnd = !trendsLoading && trends.length < 2
 
+  if (isEnd) {
+    updTrends(state.viewsVotesList)
+      .then((x) => console.log(x))
+      .catch((x) => console.log(x))
+  }
+
   return (
     <>
       {!isEnd && (

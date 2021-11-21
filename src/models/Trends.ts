@@ -31,6 +31,6 @@ export class TrendItem extends TTrendItem {
   public getPercent() {
     const votes = this.votes || 1
     const views = this.views || 1
-    return (votes / views) * 100
+    return ((votes / views) * 100).toFixed(2)
   }
 }

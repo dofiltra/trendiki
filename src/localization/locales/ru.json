@@ -29,6 +29,6 @@
   "Instagram link invalid": "Неправильная ссылка на инстаграм пост",
   "Your post add to the Battle": "Ваш пост добавлен в очередь на битву",
   "Lang": "Язык: {{lang}}",
-  "Views": "Просмотров: {{views}}",
-  "Votes": "Голосов: {{votes}}"
+  "Views": "Просмотры: {{views}}",
+  "Votes": "Победы: {{votes}}"
 }
