@@ -77,7 +77,7 @@ const TrendBlock = ({ item, onClick }: any) => {
   return (
     <div
       key={instagramId}
-      className="flex items-center w-full  bg-cover card cursor-pointer"
+      className="flex items-center w-full bg-cover card cursor-pointer"
       onClick={onClick}
     >
       <button className="transition pt-6 border-0 duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150">
