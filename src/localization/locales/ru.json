@@ -30,5 +30,7 @@
   "Your post add to the Battle": "Ваш пост добавлен в очередь на битву",
   "Lang": "Язык: {{lang}}",
   "Views": "Просмотры: {{views}}",
-  "Votes": "Победы: {{votes}}"
+  "Votes": "Победы: {{votes}}",
+  "Hit fire to choice": "Жмякай огонек, чтобы отдать свой голос",
+  "The higher the % the better": "Чем больше % тем чаще голосуют за этот вариант"
 }

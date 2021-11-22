@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { Loading } from 'components/Loader'
 import { TrendCategory, TrendItem } from 'models/Trends'
 import { getTrends } from 'helpers/api'
 import { useEffect, useState } from 'preact/hooks'
@@ -36,9 +37,16 @@ export default function TopView() {
 
   return (
     <>
-      <h1 className="w-full flex justify-center uppercase p-2">
-        {translate('Top trends')}
-      </h1>
+      <div className="w-full grid justify-center p-2">
+        <h1 className="w-full flex justify-center uppercase ">
+          {translate('Top trends')}
+        </h1>
+        <div className="w-full flex justify-center lowercase ">
+          * {translate('The higher the % the better')}
+        </div>
+      </div>
+
+      {!state.trends.length && <Loading />}
 
       <div className="overflow-x-auto">
         <table className="table w-full">

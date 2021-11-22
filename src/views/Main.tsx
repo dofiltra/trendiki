@@ -208,9 +208,14 @@ export default function MainView() {
   return (
     <>
       {!isEnd && (
-        <h1 className="w-full flex justify-center uppercase p-2">
-          {translate('Select trend')}
-        </h1>
+        <div className="w-full grid justify-center  p-2">
+          <h1 className="w-full flex justify-center uppercase ">
+            {translate('Select trend')}
+          </h1>
+          <div className="w-full flex justify-center lowercase ">
+            * {translate('Hit fire to choice')}
+          </div>
+        </div>
       )}
 
       <div className="text-center my-6">
